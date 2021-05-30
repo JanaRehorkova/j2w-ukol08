@@ -4,9 +4,18 @@
     <meta charset="UTF-8">
     <title>Můj blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/png" href="/images/favicon.png">
+    <link rel="icon" type="image/png" href="static/images/favicon.png">
+    <link rel="stylesheet" href="/static/css/style.css"/>
 </head>
 <body>
-    <h1>Tady bude můj blog…</h1>
+<h1>Recent Posts</h1>
+<div class="post" th:each="post : ${posty}">
+    <h2 th:utext="${post.title}">Titulek clanku> </h2>
+    <h3><span th:utext="${#temporals.format(post.published,'d. M. yyyy')}"></span> by <span
+            th:utext="${post.author}"></span></h3>
+    <div th:utext="${post.perex}"></div>
+    <button><a th:href="@{/{slug}(slug=${post.slug})}">Přečíst </a></button>
+    </button>
+</div>
 </body>
 </html>

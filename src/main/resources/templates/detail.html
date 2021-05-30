@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="cs" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Můj blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+    <link rel="stylesheet" href="/static/css/style.css"/>
+</head>
+<body>
+<h1 th:text="${selectedPost.title}">Titulek</h1>
+<div class="post"> published on <span th:text="${#temporals.format(selectedPost.published,'d. M. yyyy')}"></span>, written by <span th:text="${selectedPost.author}"></span></div>
+<h3 th:text="${selectedPost.perex}">prvni odstavec</h3>
+<div th:text="${selectedPost.body}">text clanku</div>
+
+<button type="submit"><a href="/"> Zpět na hlavní přehled</a>
+</button>
+</body>
+</html>
