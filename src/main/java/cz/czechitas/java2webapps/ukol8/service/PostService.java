@@ -30,6 +30,12 @@ public PostService(PostRepository postRepository) {
         return postRepository.findByPublishedIsLessThanEqual(LocalDate.now(), pageable);
     }
 
+public Page<Post> listNew(LocalDate today, Pageable pageable){
+    return postRepository.getAllByPublishedBeforeAndPublishedNotNullOrderByPublishedDesc(LocalDate.now(), pageable);
+}
+
+
+
   public Post singlePost(String slug){
       return postRepository.findBySlug(slug);
 

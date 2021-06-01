@@ -22,9 +22,9 @@ import java.time.LocalDate;
     }
 
     @GetMapping("/")
-    public ModelAndView recentPosts(@PageableDefault(sort = "published",size = 20,direction = Sort.Direction.DESC) Pageable pageable) {
+    public ModelAndView recentPosts(Pageable pageable) {
         return new ModelAndView("index")
-                .addObject("posty", service.list(LocalDate.now(), pageable));
+                .addObject("posty", service.listNew(LocalDate.now(), pageable));
     }
 
     @GetMapping("/{slug}")
